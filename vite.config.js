@@ -3,7 +3,6 @@ import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
-import compression from 'vite-plugin-compression';
 
 export default defineConfig(({ command }) => {
   return {
@@ -43,11 +42,6 @@ export default defineConfig(({ command }) => {
       FullReload(['./src/**/**.html']),
       SortCss({
         sort: 'mobile-first',
-      }),
-      compression({
-        algorithm: 'brotliCompress', // Или 'gzip'
-        ext: '.br', // Расширение для Brotli
-        threshold: 10240, // Минимальный размер файла для сжатия (в байтах)
       }),
     ],
   };
